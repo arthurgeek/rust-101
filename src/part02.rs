@@ -67,6 +67,16 @@ impl Minimum for i32 {
     }
 }
 
+impl Minimum for f32 {
+    fn min(self, b: Self) -> Self {
+        if self < b {
+            self
+        } else {
+            b
+        }
+    }
+}
+
 // We again provide a `print` function.
 impl NumberOrNothing {
     pub fn print(self) {

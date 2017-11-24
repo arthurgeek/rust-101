@@ -46,6 +46,7 @@ pub fn main() {
     let vec = read_vec();
     let min = vec_min(vec);
     min.print();
+    min.print2();
 }
 
 // **Exercise 03.1**: Define a trait `Print` to write a generic version of `SomethingOrNothing::print`.
@@ -59,14 +60,28 @@ pub fn main() {
 // 
 // *Hint*: There is a macro `print!` for printing without appending a newline.
 pub trait Print {
-    /* Add things here */
+    fn print2(self);
 }
-impl<T: Print> SomethingOrNothing<T> {
+
+impl Print for i32 {
     fn print2(self) {
-        unimplemented!()
+        print!("The number is: {}", self)
+    }
+}
+
+impl<T: Print> SomethingOrNothing<T> {
+    pub fn print2(self) {
+        match self {
+            Nothing => print!("This is: <nothing>"),
+            Something(n) => n.print2(),
+        };
     }
 }
 
 // **Exercise 03.2**: Building on exercise 02.2, implement all the things you need on `f32` to make your
 // program work with floating-point numbers.
-
+impl Print for f32 {
+    fn print2(self) {
+        print!("The number is: {}", self)
+    }
+}

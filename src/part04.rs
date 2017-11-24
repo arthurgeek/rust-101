@@ -14,7 +14,7 @@ fn work_on_vector(v: Vec<i32>) { /* do something */ }
 fn ownership_demo() {
     let v = vec![1,2,3,4];
     work_on_vector(v);
-    /* println!("The first element is: {}", v[0]); */               /* BAD! */
+    //println!("The first element is: {}", v[0]);
 }
 
 // ## Borrowing a shared reference
@@ -41,6 +41,7 @@ fn shared_ref_demo() {
     let first = &v[0];
     vec_min(&v);
     vec_min(&v);
+    println!("Vec is: {:?}", v);
     println!("The first element is: {}", *first);
 }
 
@@ -54,10 +55,19 @@ fn vec_inc(v: &mut Vec<i32>) {
 // Here's an example of calling `vec_inc`.
 fn mutable_ref_demo() {
     let mut v = vec![5,4,3,2,1];
-    /* let first = &v[0]; */
+    //let first = &v[0];
+    println!("Vec is: {:?}", v);
     vec_inc(&mut v);
+    println!("Vec is: {:?}", v);
     vec_inc(&mut v);
+    println!("Vec is: {:?}", v);
     /* println!("The first element is: {}", *first); */             /* BAD! */
+}
+
+pub fn main() {
+    ownership_demo();
+    shared_ref_demo();
+    mutable_ref_demo();
 }
 
 // ## Summary

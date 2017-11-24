@@ -24,8 +24,11 @@ mod part14;
 mod part15;
 mod part16;
 
+mod exercise01;
+
 // This decides which part is actually run.
 fn main() {
    //part00::main();
-   part01::main();
+   //part01::main();
+   exercise01::main();
 }

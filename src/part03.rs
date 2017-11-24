@@ -24,11 +24,11 @@ fn read_vec() -> Vec<i32> {
 
         match line.trim().parse::<i32>() {
             Ok(num) => {
-                unimplemented!()
+                vec.push(num)
             },
             // We don't care about the particular error, so we ignore it with a `_`.
             Err(_) => {
-                unimplemented!()
+                println!("What did I say about numbers?")
             },
         }
     }
@@ -44,7 +44,8 @@ use part02::{SomethingOrNothing,Something,Nothing,vec_min};
 // and tell you the minimum. Neat, isn't it?
 pub fn main() {
     let vec = read_vec();
-    unimplemented!()
+    let min = vec_min(vec);
+    min.print();
 }
 
 // **Exercise 03.1**: Define a trait `Print` to write a generic version of `SomethingOrNothing::print`.
